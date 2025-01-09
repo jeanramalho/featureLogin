@@ -10,7 +10,7 @@ import UIKit
 class SplashView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        self.backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
