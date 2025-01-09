@@ -10,13 +10,26 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    //cria a variavel que receberá a instancia do flow controller
+    var flowController: LoginFlowController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        // da o nome windowScene e guarda na memoria o conteudo da variavel
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // cria e inicia uma variavel que recebera as propriedades do windowScene
+        let window = UIWindow(windowScene: windowScene)
+        // Intancia a view de flowController
+        flowController = LoginFlowController()
+        //Atribui à variável de rootViewController a função start() da classe flowController que chama a primeira view do app
+        let rootViewController = flowController?.start()
+        
+        // Atribui à propriedade rootViewController do window, ou seja a view raiz, a primeira view, a view informada no flowController
+        window.rootViewController = rootViewController
+        // Atribui para a variavel global window a constante window criada no escopo da função
+        self.window = window
+        // torna as alterações visiveis
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
