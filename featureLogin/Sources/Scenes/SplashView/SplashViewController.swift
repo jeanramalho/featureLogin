@@ -10,12 +10,13 @@ import UIKit
 class SplashViewController: UIViewController {
     // cria a variavel que vai receber a view de conteudo
     let contentView: SplashView
-    let coordinator: LoginFlowController
+    let coordinator: LoginCoordinatorProtocol?
     //inicia a classe
-    init(contentView: SplashView) {
+    init(contentView: SplashView, coordinator: LoginCoordinatorProtocol) {
         self.contentView = contentView
-        self.coordinator = LoginFlowController()
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     //função gerada automáticamente para corrigir o fato de estarmos usando viewCoode e não storyboard
@@ -28,6 +29,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         //chama função de configuração do app
         setup()
+        startTimer()
     }
     // função que configura a classe
     private func setup(){
@@ -54,7 +56,7 @@ class SplashViewController: UIViewController {
     
     private func startTimer(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.coordinator.showHomeView()
+            self?.coordinator?.showHomeView()
         }
     }
 }

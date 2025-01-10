@@ -7,7 +7,11 @@
 import Foundation
 import UIKit
 
-class LoginFlowController {
+protocol LoginCoordinatorProtocol: AnyObject {
+    func showHomeView()
+}
+
+class LoginFlowController: LoginCoordinatorProtocol {
     //Cria variavel que irá receber a view incial do e app
     private var navigationController: UINavigationController?
     
@@ -19,7 +23,7 @@ class LoginFlowController {
     func start() -> UINavigationController {
         let contentView = SplashView()
         // constante que recebe a instancia da view inicial
-        let startViewController = SplashViewController(contentView: contentView)
+        let startViewController = SplashViewController(contentView: contentView, coordinator: self)
         // atribui a view inicial para o controle de navegação
         self.navigationController = UINavigationController(rootViewController: startViewController)
         // retorna o controle de navegação
