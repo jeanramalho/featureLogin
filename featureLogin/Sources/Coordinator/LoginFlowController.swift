@@ -30,9 +30,13 @@ class LoginFlowController: LoginCoordinatorProtocol {
         return navigationController ?? UINavigationController()
     }
     
+    // função que vai chamar a view que será exibida após a splashScreen
     func showHomeView(){
+        //constante que recebe a instancia da view desejada
         let contentView = LoginView()
+        // atribui a view desejada para a viewController
         let homeView = LoginViewController(contentView: contentView)
+        // atribui a view dessejada para o controle de navegação
         self.navigationController?.setViewControllers([homeView], animated: true)
     }
 }

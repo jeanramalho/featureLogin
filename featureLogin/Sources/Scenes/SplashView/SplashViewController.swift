@@ -10,6 +10,7 @@ import UIKit
 class SplashViewController: UIViewController {
     // cria a variavel que vai receber a view de conteudo
     let contentView: SplashView
+    //cria a variavel do tipo do protocolo para ter acesso ao metodo que chama a proxima tela
     let coordinator: LoginCoordinatorProtocol?
     //inicia a classe
     init(contentView: SplashView, coordinator: LoginCoordinatorProtocol) {
@@ -29,6 +30,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         //chama função de configuração do app
         setup()
+        //chama a função de timer
         startTimer()
     }
     // função que configura a classe
@@ -54,6 +56,7 @@ class SplashViewController: UIViewController {
            
        }
     
+    //função que irá chamar o metódo que chama a proxima tela
     private func startTimer(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.coordinator?.showHomeView()
