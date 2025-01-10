@@ -10,10 +10,11 @@ import UIKit
 class SplashViewController: UIViewController {
     // cria a variavel que vai receber a view de conteudo
     let contentView: SplashView
-    
+    let coordinator: LoginFlowController
     //inicia a classe
     init(contentView: SplashView) {
         self.contentView = contentView
+        self.coordinator = LoginFlowController()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,4 +51,10 @@ class SplashViewController: UIViewController {
            ])
            
        }
+    
+    private func startTimer(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.coordinator.showHomeView()
+        }
+    }
 }

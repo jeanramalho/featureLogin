@@ -25,4 +25,10 @@ class LoginFlowController {
         // retorna o controle de navegação
         return navigationController ?? UINavigationController()
     }
+    
+    func showHomeView(){
+        let contentView = LoginView()
+        let homeView = LoginViewController(contentView: contentView)
+        self.navigationController?.setViewControllers([homeView], animated: true)
+    }
 }
