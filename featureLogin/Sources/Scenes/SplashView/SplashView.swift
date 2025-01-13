@@ -13,7 +13,6 @@ class SplashView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Meu Portifólio"
-        label.font = UIFont(name: .system, size: 14)
         return label
     }()
     
@@ -22,12 +21,28 @@ class SplashView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .blue
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI(){
+        self.backgroundColor = .blue
+        
+        setHierarchy()
+        setConstrainsts()
+    }
+    
+    private func setHierarchy(){
+        
+    }
+    
+    private func setConstrainsts(){
+        
     }
 }
