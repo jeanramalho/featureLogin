@@ -12,7 +12,6 @@ class LoginView: UIView {
     lazy var viewLogin: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
         return view
     }()
     
@@ -29,6 +28,7 @@ class LoginView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Rubik-Bold", size: 14)
         label.numberOfLines = 0
+        label.text = "Email:"
         return label
     }()
     
@@ -36,6 +36,7 @@ class LoginView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Rubik-Bold", size: 14)
+        label.text = "Senha:"
         return label
     }()
     
@@ -62,8 +63,10 @@ class LoginView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.navyBlue
-        button.tintColor = .white
+        button.tintColor = Colors.navyBlue
         button.layer.cornerRadius = 6
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
@@ -86,12 +89,12 @@ class LoginView: UIView {
     private func setHierarchy(){
         self.addSubview(viewLogin)
         
-//        viewLogin.addSubview(logoImageView)
-//        viewLogin.addSubview(emailLabel)
-//        viewLogin.addSubview(emailTextField)
-//        viewLogin.addSubview(passwordLabel)
-//        viewLogin.addSubview(passwordTextField)
-//        viewLogin.addSubview(loginButton)
+        viewLogin.addSubview(logoImageView)
+        viewLogin.addSubview(emailLabel)
+        viewLogin.addSubview(emailTextField)
+        viewLogin.addSubview(passwordLabel)
+        viewLogin.addSubview(passwordTextField)
+        viewLogin.addSubview(loginButton)
     }
     
     private func setConstraints(){
@@ -99,9 +102,31 @@ class LoginView: UIView {
             viewLogin.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             viewLogin.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
             viewLogin.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
-            viewLogin.heightAnchor.constraint(equalToConstant: 300),
+            viewLogin.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
             
+            logoImageView.topAnchor.constraint(equalTo: viewLogin.topAnchor),
+            logoImageView.centerXAnchor.constraint(equalTo: viewLogin.centerXAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: 92),
+            logoImageView.widthAnchor.constraint(equalToConstant: 92),
             
+            emailLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 16),
+            emailLabel.leadingAnchor.constraint(equalTo: viewLogin.leadingAnchor, constant: 8),
+            
+            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 8),
+            emailTextField.leadingAnchor.constraint(equalTo: viewLogin.leadingAnchor, constant: 8),
+            emailTextField.trailingAnchor.constraint(equalTo: viewLogin.trailingAnchor, constant: -8),
+            
+            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
+            passwordLabel.leadingAnchor.constraint(equalTo: viewLogin.leadingAnchor, constant: 8),
+            
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 8),
+            passwordTextField.leadingAnchor.constraint(equalTo: viewLogin.leadingAnchor, constant: 8),
+            passwordTextField.trailingAnchor.constraint(equalTo: viewLogin.trailingAnchor, constant: -8),
+            
+            loginButton.bottomAnchor.constraint(equalTo: viewLogin.bottomAnchor, constant: 16),
+            loginButton.leadingAnchor.constraint(equalTo: viewLogin.leadingAnchor, constant: 8),
+            loginButton.trailingAnchor.constraint(equalTo: viewLogin.trailingAnchor, constant: -8),
+            loginButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 }
