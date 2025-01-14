@@ -39,7 +39,7 @@ class SplashView: UIView {
     }
     
     private func setupUI(){
-        self.backgroundColor = .blue
+        self.backgroundColor = Colors.navyBlue
         
         setHierarchy()
         setConstrainsts()
