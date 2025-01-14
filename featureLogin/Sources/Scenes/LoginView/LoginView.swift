@@ -12,6 +12,7 @@ class LoginView: UIView {
     lazy var viewLogin: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
         return view
     }()
     
@@ -57,6 +58,15 @@ class LoginView: UIView {
         return textField
     }()
     
+    lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Colors.navyBlue
+        button.tintColor = .white
+        button.layer.cornerRadius = 6
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -74,10 +84,24 @@ class LoginView: UIView {
     }
     
     private func setHierarchy(){
+        self.addSubview(viewLogin)
         
+//        viewLogin.addSubview(logoImageView)
+//        viewLogin.addSubview(emailLabel)
+//        viewLogin.addSubview(emailTextField)
+//        viewLogin.addSubview(passwordLabel)
+//        viewLogin.addSubview(passwordTextField)
+//        viewLogin.addSubview(loginButton)
     }
     
     private func setConstraints(){
-        
+        NSLayoutConstraint.activate([
+            viewLogin.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            viewLogin.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+            viewLogin.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            viewLogin.heightAnchor.constraint(equalToConstant: 300),
+            
+            
+        ])
     }
 }
